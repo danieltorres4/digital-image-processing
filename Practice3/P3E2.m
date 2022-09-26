@@ -31,22 +31,23 @@ sz3 = size(imagensinzonanulaB);
 %imshow(imagensinzonanulaB)
 
 %GENERANDO HISTOGRAMAS
-histograma2 = histeq(imagensinzonanula);
+histeqZonaA = histeq(imagensinzonanula);
 figure("name", "Imagen ZonaA y su histograma")
 subplot(1,2,1)
 imhist(imagensinzonanula)
 subplot(1,2,2)
-imshow(histograma2)
+imshow(imagensinzonanula)
 title('ZONA A')
 
-histograma3 = histeq(imagensinzonanulaB);
+histeqZonaB = histeq(imagensinzonanulaB);
 figure("name", "Imagen ZonaB y su histograma")
 subplot(1,2,1)
 imhist(imagensinzonanulaB)
 subplot(1,2,2)
-imshow(histograma3)
+imshow(imagensinzonanulaB)
 title('ZONA B')
 
+%%%%%%%%%%Inciso b%%%%%%%%%%
 combImg = imadd(imagensinzonanula, imagensinzonanulaB, 'uint16');
 figure("name", "Mosaico de Zona A y Zona B")
 imshow(combImg,[])
@@ -62,11 +63,11 @@ subplot(1,3,3)
 imshow(combImg, [])
 title('MOSAICO')
 
+%%%%%%%%%%Inciso c%%%%%%%%%%
 combImg2 = imfuse(imagensinzonanula, imagensinzonanulaB, 'montage');
 figure("name", "Mosaico Traslape")
 imshow(combImg2)
 title('Mosaico Traslape')
-
 
 %TRASLAPE 
 %C=imcrop(combImg2);
@@ -80,3 +81,54 @@ imhist(traslape)
 subplot(1,2,2)
 imshow(traslape)
 title('TRASLAPE')
+
+%%%%%%%%%%Inciso e%%%%%%%%%%
+histeqMosaico = histeq(combImg);
+figure("name","Mosaico con histograma ecualizado")
+subplot(1,2,1)
+imshow(histeqMosaico)
+subplot(1,2,2)
+imhist(histeqMosaico)
+
+%%%%%%%%%%Inciso f%%%%%%%%%%
+mosaico128 = histeq(combImg,128);
+figure("name","Mosaico con 128 niveles de cuantización")
+subplot(1,2,1)
+imshow(mosaico128)
+subplot(1,2,2)
+imhist(mosaico128)
+
+mosaico64 = histeq(combImg,64);
+figure("name","Mosaico con 64 niveles de cuantización")
+subplot(1,2,1)
+imshow(mosaico64)
+subplot(1,2,2)
+imhist(mosaico64)
+
+mosaico32 = histeq(combImg,32);
+figure("name","Mosaico con 32 niveles de cuantización")
+subplot(1,2,1)
+imshow(mosaico32)
+subplot(1,2,2)
+imhist(mosaico32)
+
+mosaico16 = histeq(combImg,16);
+figure("name","Mosaico con 16 niveles de cuantización")
+subplot(1,2,1)
+imshow(mosaico16)
+subplot(1,2,2)
+imhist(mosaico16)
+
+mosaico8 = histeq(combImg,8);
+figure("name","Mosaico con 8 niveles de cuantización")
+subplot(1,2,1)
+imshow(mosaico8)
+subplot(1,2,2)
+imhist(mosaico8)
+
+mosaico2 = histeq(combImg,2);
+figure("name","Mosaico con 2 niveles de cuantización")
+subplot(1,2,1)
+imshow(mosaico2)
+subplot(1,2,2)
+imhist(mosaico2)
