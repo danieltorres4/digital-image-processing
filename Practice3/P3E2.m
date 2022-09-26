@@ -66,3 +66,17 @@ combImg2 = imfuse(imagensinzonanula, imagensinzonanulaB, 'montage');
 figure("name", "Mosaico Traslape")
 imshow(combImg2)
 title('Mosaico Traslape')
+
+
+%TRASLAPE 
+%C=imcrop(combImg2);
+%imshow(C)
+traslape = imcrop(combImg2,[1632.5 0.5 262 1500]);
+%imshow(traslape)
+
+figure("name", "Traslape y su histograma")
+subplot(1,2,1)
+imhist(traslape)
+subplot(1,2,2)
+imshow(traslape)
+title('TRASLAPE')
