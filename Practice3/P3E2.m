@@ -20,15 +20,15 @@ zonaB = imread("zonaB_b5.tif");
 %imshow(J) % muestra la imagen recortada
 imagensinzonanula = imcrop(zonaA,[0.5 0.5 1765 1500]);
 sz1 = size(imagensinzonanula);
-figure(1)
-imshow(imagensinzonanula)
+%figure(1)
+%imshow(imagensinzonanula)
 
 imagensinzonanulaB = imcrop(zonaB,[1222.5 4.5 1278 1496]);
 sz2 = size(imagensinzonanulaB);
 imagensinzonanulaB = imresize(imagensinzonanulaB, [1500,1766]);
 sz3 = size(imagensinzonanulaB);
-figure(2)
-imshow(imagensinzonanulaB)
+%figure(2)
+%imshow(imagensinzonanulaB)
 
 %GENERANDO HISTOGRAMAS
 histograma2 = histeq(imagensinzonanula);
@@ -45,4 +45,24 @@ subplot(1,2,1)
 imhist(imagensinzonanulaB)
 subplot(1,2,2)
 imshow(histograma3)
-title('HISTOGRAMA DE ZONA B')
+title('ZONA B')
+
+combImg = imadd(imagensinzonanula, imagensinzonanulaB, 'uint16');
+figure("name", "Mosaico de Zona A y Zona B")
+imshow(combImg,[])
+
+figure("name","Comparisson")
+subplot(1,3,1) 
+imshow(imagensinzonanula)
+title('ZONA A')
+subplot(1,3,2)
+imshow(imagensinzonanulaB)
+title('ZONA B')
+subplot(1,3,3)
+imshow(combImg, [])
+title('MOSAICO')
+
+combImg2 = imfuse(imagensinzonanula, imagensinzonanulaB, 'montage');
+figure("name", "Mosaico Traslape")
+imshow(combImg2)
+title('Mosaico Traslape')
