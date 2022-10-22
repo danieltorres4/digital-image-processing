@@ -1,13 +1,15 @@
 %1. Para todos los puntos siguientes, utilizar una imagen sin ruido y otra imagen con ruido. La imagen con
 %ruido se puede generar a partir de la imagen sin ruido usando el siguiente comando de MATLAB: J =
 %IMNOISE(I,TIPO...), donde TIPO es una cadena que puede tomar valores 'gaussian' ,'localvar', etc .
-imagen = imread('C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\paisaje.JPG');
-imshow(imagen)
+imagen = imread('cameraman.tif');
 imagenruido= imnoise(imagen,'gaussian');
-imshow(imagenruido)
 
-%2.Aplicar los filtros paso bajas de bloque a la imagen sin ruido y a la imagen con ruido usando filtros de
-%orden 3x3, 7x7, 9x9 y 11x11.
+figure("name","NOISE-FREE IMAGE vs NOISY IMAGE")
+imshowpair(imagen,imagenruido,"montage")
+title('NOISE-FREE IMAGE vs NOISY IMAGE')
+
+%2.Aplicar los filtros paso bajas de bloque a la imagen sin ruido y a la
+%imagen con ruido usando filtros de orden 3x3, 7x7, 9x9 y 11x11.
 %Filtros pasa bajas
 fl1 = fspecial('average',[3 3]);
 fl2 = fspecial('average',[5 5]);
@@ -19,53 +21,66 @@ imsrfl2 = imfilter(imagen,fl2);
 imsrfl3 = imfilter(imagen,fl3);
 imsrfl4 = imfilter(imagen,fl4);
 % Aplicando los filtros
-subplot(2,2,1); 
+figure("name","NOISE-FREE IMAGE FILTERS: 3x3 and 5x5")
+subplot(1,2,1); 
 imshow(imsrfl1); 
-title('Filtro 3x3');
-subplot(2,2,2); 
+title('NOISE-FREE IMAGE WITH 3x3 FILTER');
+
+subplot(1,2,2); 
 imshow(imsrfl2); 
-title('Filtro 5x5');
-subplot(2,2,3); 
+title('NOISE-FREE IMAGE WITH 5x5 FILTER');
+
+figure("name","NOISE-FREE IMAGE FILTERS: 7x7 and 11x11")
+subplot(1,2,1); 
 imshow(imsrfl3); 
-title('Filtro 7x7');
-subplot(2,2,4); 
-imshow(imsrf4); 
-title('Filtro 11x11');
+title('NOISE-FREE IMAGE WITH 7x7 FILTER');
+
+subplot(1,2,2); 
+imshow(imsrfl4); 
+title('NOISE-FREE IMAGE WITH 11x11 FILTER');
+
 % Aplicando filtros a la imagen con ruido
 imcrfl1 = imfilter(imagenruido,fl1);
 imcrfl2 = imfilter(imagenruido,fl2);
 imcrfl3 = imfilter(imagenruido,fl3);
 imcrfl4 = imfilter(imagenruido,fl4);
 %Se muestran los resultados de aplicar los filtros
-subplot(2,2,1); 
+figure("name","NOISY IMAGE FILTERS: 3x3 and 5x5")
+subplot(1,2,1); 
 imshow(imcrfl1); 
-title('Filtro 3x3');
-subplot(2,2,2); 
+title('NOISY IMAGE WITH 3x3 FILTER');
+subplot(1,2,2); 
 imshow(imcrfl2); 
-title('Filtro 5x5');
-subplot(2,2,3); 
-imshow(imcrfl3); 
-title('Filtro 7x7');
-subplot(2,2,4); 
-imshow(imcrfl4); 
-title('Filtro 11x11');
+title('NOISY IMAGE WITH 5x5 FILTER');
 
-%4. Aplicar a la imagen sin ruido y con ruido los filtros basados en la primera derivada de gausiana o
-%detectores de borde siguientes :
-%a) De bloque [1 -1].
-%b) Prewitt en la dirección X y en la dirección Y.
+figure("name","NOISY IMAGE FILTERS: 7x7 and 11x11")
+subplot(1,2,1); 
+imshow(imcrfl3); 
+title('NOISY IMAGE WITH 7x7 FILTER');
+subplot(1,2,2); 
+imshow(imcrfl4); 
+title('NOISY IMAGE WITH 11x11 FILTER');
+
+%4. Aplicar a la imagen sin ruido y con ruido los filtros basados
+%en la primera derivada de gausiana o detectores de borde siguientes:
+%   a) De bloque [1 -1].
+%   b) Prewitt en la dirección X y en la dirección Y.
 %Sin ruido 
-pwr= edge(imagen,'Prewitt');
-imshow(pwr)
+pwr= edge(imagen,'prewitt');
 %Con ruido 
-pwr2= edge(imagenruido,'Prewitt');
-imshow(pwr2)
+pwr2= edge(imagenruido,'prewitt');
+
+figure("name",'FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER')
+imshowpair(pwr, pwr2, "montage")
+title('FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER')
+
 %c) Sobel en la dirección X y en la dirección Y.
 %Sin ruido 
-sobel = edge(imagen);
-imshow(sobel)
+sobel = edge(imagen, "sobel");
 %Con ruido ruido 
-sobel2 = edge(imagenruido);
-imshow(sobel2)
-%d) Basados en la primera derivada de Gaussiana de orden 5x5, 7x7 y 11x11.
+sobel2 = edge(imagenruido, "sobel");
 
+figure("name",'FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER')
+imshowpair(sobel, sobel2, "montage")
+title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER')
+%d) Basados en la primera derivada de Gaussiana de orden 5x5, 7x7 y 11x11.
