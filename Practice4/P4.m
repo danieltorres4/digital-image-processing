@@ -66,21 +66,33 @@ title('NOISY IMAGE WITH 11x11 FILTER');
 %   a) De bloque [1 -1].
 %   b) Prewitt en la dirección X y en la dirección Y.
 %Sin ruido 
-pwr= edge(imagen,'prewitt');
+pwr= edge(imagen,'prewitt','horizontal');
+pwr3 = edge(imagen,'prewitt','vertical');
 %Con ruido 
-pwr2= edge(imagenruido,'prewitt');
+pwr2= edge(imagenruido,'prewitt','horizontal');
+pwr4 = edge(imagenruido,'prewitt','vertical');
 
-figure("name",'FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER')
+figure("name",'FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: HORIZONTAL')
 imshowpair(pwr, pwr2, "montage")
-title('FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER')
+title('FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: HORIZONTAL')
 
-%c) Sobel en la dirección X y en la dirección Y.
+figure("name",'FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: VERTICAL')
+imshowpair(pwr3, pwr4, "montage")
+title('FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: VERTICAL')
+
+%   c) Sobel en la dirección X y en la dirección Y.
 %Sin ruido 
-sobel = edge(imagen, "sobel");
+sobel = edge(imagen, "sobel", 'horizontal');
+sobel3 = edge(imagen, "sobel", 'vertical');
 %Con ruido ruido 
-sobel2 = edge(imagenruido, "sobel");
+sobel2 = edge(imagenruido, "sobel",'horizontal');
+sobel4 = edge(imagenruido, "sobel",'vertical');
 
-figure("name",'FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER')
+figure("name",'FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: HORIZONTAL')
 imshowpair(sobel, sobel2, "montage")
-title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER')
+title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: HORIZONTAL')
+
+figure("name",'FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: VERTICAL')
+imshowpair(sobel3, sobel4, "montage")
+title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: VERTICAL')
 %d) Basados en la primera derivada de Gaussiana de orden 5x5, 7x7 y 11x11.
