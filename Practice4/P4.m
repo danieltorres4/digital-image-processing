@@ -96,3 +96,26 @@ figure("name",'FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILT
 imshowpair(sobel3, sobel4, "montage")
 title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: VERTICAL')
 %d) Basados en la primera derivada de Gaussiana de orden 5x5, 7x7 y 11x11.
+
+%6. Difuminar las imágenes sin ruido y con ruido usando un filtro paso bajas de orden 5x5, de tal manera
+%que se obtenga una imagen sin ruido y con pérdida de nitidez y otra imagen con ruido y perdida de
+%nitidez. Para cada uno de los siguientes incisos, filtrar las imágenes utilizando el filtro unsharp masking
+%encontrado con los siguientes tipos de filtro paso bajas:
+%a) Filtro paso bajas de bloque de orden 3x3 y 7x7.
+%Imagen sin ruido orden 3x3
+unsharp1= imsharpen(imsrfl1);
+figure, imshow(unsharp1)
+title('Sharpened Image1');
+%Imagen sin ruido orden 7x7
+unsharp2= imsharpen(imsrfl3);
+figure, imshow(unsharp2)
+title('Sharpened Image2');
+%Imagen con ruido orden 3x3
+unsharp3= imsharpen(imcrfl1);
+figure, imshow(unsharp3)
+title('Sharpened Image3');
+%Imagen con ruido orden 7x7
+unsharp4= imsharpen(imcrfl3);
+figure, imshow(unsharp4)
+title('Sharpened Image2');
+%b) Filtro paso bajas binomial de orden 3x3 y 7x7.
