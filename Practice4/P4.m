@@ -62,6 +62,67 @@ imshow(imcrfl4);
 title('NOISY IMAGE WITH 11x11 FILTER');
 
 %3. Aplicar los filtros paso bajas binomiales a la imagen sin ruido y a la imagen con ruido usando filtros de orden 3x3, 7x7, 9x9 y 11x11.
+%   imagen con ruido usando filtros de orden 3x3, 7x7, 9x9 y 11x11.
+fl1_h = [1,2,1];
+fl1_v = [1;2;1];
+fl2_h = [1,6,15,20,15,6,1];
+fl2_v = [1;6;15;20;15;6;1];
+fl3_h = [1,8,28,56,70,56,28,8,1];
+fl3_v = [1;8;28;56;70;56;28;8;1];
+fl4_h = [1,10,45,120,210,252,210,120,45,10,1];
+fl4_v = [1;10;45;120;210;252;210;120;45;10;1];
+
+f_3x3 =   1/16*(fl1_v*fl1_h);
+f_7x7 =   1/4096*(fl2_v*fl2_h);
+f_9x9 =   1/65536*(fl3_v*fl3_h);
+f_11x11 = 1/1048576*(fl4_v*fl4_h);
+
+% filtros a la imagen sin ruido
+imsrfl1 = imfilter(imagen,f_3x3);
+imsrfl2 = imfilter(imagen,f_7x7);
+imsrfl3 = imfilter(imagen,f_9x9);
+imsrfl4 = imfilter(imagen,f_11x11);
+
+% Aplicando los filtros
+figure("name","NOISE-FREE IMAGE FILTERS: 3x3 and 7x7")
+subplot(1,2,1); 
+imshow(imsrfl1); 
+title('NOISE-FREE IMAGE WITH 3x3 FILTER');
+
+subplot(1,2,2); 
+imshow(imsrfl2); 
+title('NOISE-FREE IMAGE WITH 7x7 FILTER');
+
+figure("name","NOISE-FREE IMAGE FILTERS: 9x9 and 11x11")
+subplot(1,2,1); 
+imshow(imsrfl3); 
+title('NOISE-FREE IMAGE WITH 9x9 FILTER');
+
+subplot(1,1,1); 
+imshow(imsrfl4); 
+title('NOISE-FREE IMAGE WITH 11x11 FILTER');
+
+% Aplicando filtros a la imagen con ruido
+imcrfl1 = imfilter(imagenruido,f_3x3);
+imcrfl2 = imfilter(imagenruido,f_7x7);
+imcrfl3 = imfilter(imagenruido,f_9x9);
+imcrfl4 = imfilter(imagenruido,f_11x11);
+%Se muestran los resultados de aplicar los filtros
+figure("name","NOISY IMAGE FILTERS: 3x3 and 7x7")
+subplot(1,2,1); 
+imshow(imcrfl1); 
+title('NOISY IMAGE WITH 3x3 FILTER');
+subplot(1,2,2); 
+imshow(imcrfl2); 
+title('NOISY IMAGE WITH 7x7 FILTER');
+
+figure("name","NOISY IMAGE FILTERS: 9x9 and 11x11")
+subplot(1,2,1); 
+imshow(imcrfl3); 
+title('NOISY IMAGE WITH 9x9 FILTER');
+subplot(1,2,2); 
+imshow(imcrfl4); 
+title('NOISY IMAGE WITH 11x11 FILTER');
 
 
 %4. Aplicar a la imagen sin ruido y con ruido los filtros basados
@@ -146,3 +207,44 @@ title('Laplacian 2nd derivative 7x7 Gauss without noise vs with noise')
 figure("name",'Laplacian basados en la segunda derivada de Gaussiana de orden 11x11')
 imshowpair(imglapgaus11, imglapgausnoise11, "montage")
 title('Laplacian 2nd derivative 11x11 Gauss without noise vs with noise')
+
+
+%6. Difuminar las imágenes sin ruido y con ruido usando un filtro paso bajas de orden 5x5, de tal manera
+%que se obtenga una imagen sin ruido y con pérdida de nitidez y otra imagen con ruido y perdida de
+%nitidez. Para cada uno de los siguientes incisos, filtrar las imágenes utilizando el filtro unsharp masking
+%encontrado con los siguientes tipos de filtro paso bajas:
+%a) Filtro paso bajas de bloque de orden 3x3 y 7x7.
+%Imagen sin ruido orden 3x3
+unsharp1= imsharpen(imsrfl1);
+figure, imshow(unsharp1)
+title('Sharpened Image1');
+%Imagen sin ruido orden 7x7
+unsharp2= imsharpen(imsrfl3);
+figure, imshow(unsharp2)
+title('Sharpened Image2');
+%Imagen con ruido orden 3x3
+unsharp3= imsharpen(imcrfl1);
+figure, imshow(unsharp3)
+title('Sharpened Image3');
+%Imagen con ruido orden 7x7
+unsharp4= imsharpen(imcrfl3);
+figure, imshow(unsharp4)
+title('Sharpened Image2');
+
+%b) Filtro paso bajas binomial de orden 3x3 y 7x7.
+%Imagen sin ruido orden 3x3
+unsharp1= imsharpen(imsrfl1);
+figure, imshow(unsharp1)
+title('Sharpened Image1');
+%Imagen sin ruido orden 7x7
+unsharp2= imsharpen(imsrfl2);
+figure, imshow(unsharp2)
+title('Sharpened Image2');
+%Imagen con ruido orden 3x3
+unsharp3= imsharpen(imcrfl1);
+figure, imshow(unsharp3)
+title('Sharpened Image3');
+%Imagen con ruido orden 7x7
+unsharp4= imsharpen(imcrfl2);
+figure, imshow(unsharp4)
+title('Sharpened Image4');
