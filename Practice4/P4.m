@@ -1,6 +1,16 @@
-%1. Para todos los puntos siguientes, utilizar una imagen sin ruido y otra imagen con ruido. La imagen con
-%ruido se puede generar a partir de la imagen sin ruido usando el siguiente comando de MATLAB: J =
-%IMNOISE(I,TIPO...), donde TIPO es una cadena que puede tomar valores 'gaussian' ,'localvar', etc .
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%       Practice 4 - Spatial Filters      %%% 
+%%%             Team members                %%%
+%%%     +Herrera Godina Adriana Jocelyn     %%%
+%%%        +Miranda Miranda Emiliano        %%%
+%%%      +Nicolás Marín Brian Geovanny      %%%
+%%%      +Sanchez Torres Sergio Daniel      %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+clc
+%1. Para todos los puntos siguientes, utilizar una imagen sin ruido y otra 
+% imagen con ruido. La imagen con ruido se puede generar a partir de la 
+% imagen sin ruido usando el siguiente comando de MATLAB: J = IMNOISE(I,TIPO...)
+% donde TIPO es una cadena que puede tomar valores 'gaussian' ,'localvar', etc.
 imagen = imread('cameraman.tif');
 imagenruido= imnoise(imagen,'gaussian');
 
@@ -61,7 +71,8 @@ subplot(1,2,2);
 imshow(imcrfl4); 
 title('NOISY IMAGE WITH 11x11 FILTER');
 
-%3. Aplicar los filtros paso bajas binomiales a la imagen sin ruido y a la imagen con ruido usando filtros de orden 3x3, 7x7, 9x9 y 11x11.
+%3. Aplicar los filtros paso bajas binomiales a la imagen sin ruido y a la 
+% imagen con ruido usando filtros de orden 3x3, 7x7, 9x9 y 11x11.
 %   imagen con ruido usando filtros de orden 3x3, 7x7, 9x9 y 11x11.
 fl1_h = [1,2,1];
 fl1_v = [1;2;1];
@@ -84,7 +95,7 @@ imsrfl3 = imfilter(imagen,f_9x9);
 imsrfl4 = imfilter(imagen,f_11x11);
 
 % Aplicando los filtros
-figure("name","NOISE-FREE IMAGE FILTERS: 3x3 and 7x7")
+figure("name","3- FREE-NOISE IMAGE BINOMIAL FILTERS: 3x3 and 7x7")
 subplot(1,2,1); 
 imshow(imsrfl1); 
 title('NOISE-FREE IMAGE WITH 3x3 FILTER');
@@ -108,7 +119,7 @@ imcrfl2 = imfilter(imagenruido,f_7x7);
 imcrfl3 = imfilter(imagenruido,f_9x9);
 imcrfl4 = imfilter(imagenruido,f_11x11);
 %Se muestran los resultados de aplicar los filtros
-figure("name","NOISY IMAGE FILTERS: 3x3 and 7x7")
+figure("name","3- NOISY IMAGE BINOMIAL FILTERS: 3x3 and 7x7")
 subplot(1,2,1); 
 imshow(imcrfl1); 
 title('NOISY IMAGE WITH 3x3 FILTER');
@@ -116,7 +127,7 @@ subplot(1,2,2);
 imshow(imcrfl2); 
 title('NOISY IMAGE WITH 7x7 FILTER');
 
-figure("name","NOISY IMAGE FILTERS: 9x9 and 11x11")
+figure("name","3- NOISY IMAGE BINOMIAL FILTERS: 9x9 and 11x11")
 subplot(1,2,1); 
 imshow(imcrfl3); 
 title('NOISY IMAGE WITH 9x9 FILTER');
@@ -128,7 +139,9 @@ title('NOISY IMAGE WITH 11x11 FILTER');
 %4. Aplicar a la imagen sin ruido y con ruido los filtros basados
 %en la primera derivada de gausiana o detectores de borde siguientes:
 %   a) De bloque [1 -1].
-bloque = edge(imagen, 'zerocross', [1 -1]); %Detecta bordes observando los cruces por cero después de filtrar la imagen con un filtro de bloque especificado
+%Detecta bordes observando los cruces por cero después de filtrar la imagen 
+% con un filtro de bloque especificado
+bloque = edge(imagen, 'zerocross', [1 -1]); 
 bloquenoise = edge(imagenruido, 'zerocross', [1 -1]);
 
 figure("name",'Filtro de bloque')
@@ -168,14 +181,34 @@ imshowpair(sobel3, sobel4, "montage")
 title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: VERTICAL')
 
 %d) Basados en la primera derivada de Gaussiana de orden 5x5, 7x7 y 11x11.
+fnigf5x5 = imgaussfilt(imagen, [5 5]);
+nigf5x5 = imgaussfilt(imagenruido, [5 5]);
+fnigf7x7 = imgaussfilt(imagen, [7 7]);
+nigf7x7 = imgaussfilt(imagenruido, [7 7]);
+fnigf11x11 = imgaussfilt(imagen, [11 11]);
+nigf11x11 = imgaussfilt(imagenruido, [11 11]);
+
+figure("name",'4d: FREE-NOISE IMAGE VS NOISY IMAGE 5x5')
+imshowpair(fnigf5x5, nigf5x5, "montage")
+title('FILTER BASED ON THE FIRST DERIVATIVE OF ORDER 5X5: FREE-NOISE vs NOISY')
+
+figure("name",'4d: FREE-NOISE IMAGE VS NOISY IMAGE 7x7')
+imshowpair(fnigf7x7, nigf7x7, "montage")
+title('FILTER BASED ON THE FIRST DERIVATIVE OF ORDER 7X7: FREE-NOISE vs NOISY')
+
+figure("name",'4d: FREE-NOISE IMAGE VS NOISY IMAGE 11x11')
+imshowpair(fnigf7x7, nigf7x7, "montage")
+title('FILTER BASED ON THE FIRST DERIVATIVE OF ORDER 11X11: FREE-NOISE vs NOISY')
 
 
+%5. De igual manera, aplicar a la imagen sin ruido y a la imagen con ruido 
+% los filtros basados en la segunda derivada de gausiana siguientes:
 
-%5. De igual manera, aplicar a la imagen sin ruido y a la imagen con ruido los filtros basados en la segunda derivada de gausiana siguientes:
-
-%a)El Laplaciano 3x3 que encuentre en la literatura, por ejemplo, el filtro con 8 al centro y rodeado de -1’s.
+%a)El Laplaciano 3x3 que encuentre en la literatura, por ejemplo, el filtro
+% con 8 al centro y rodeado de -1’s.
 alpha = 0.2; %forma el filtro de 8 en el centro y rodeado de -1s
-laplacian = fspecial('laplacian',alpha); %Filtro de 3 por 3 que aproxima la forma del operador laplaciano bidimensional
+%Filtro de 3 por 3 que aproxima la forma del operador laplaciano bidimensional
+laplacian = fspecial('laplacian',alpha); 
 imglap = imfilter(imagen,laplacian);
 imglapnoise = imfilter(imagenruido,laplacian);
 
@@ -183,8 +216,10 @@ figure("name",'Segunda derivada: Laplaciano')
 imshowpair(imglap, imglapnoise, "montage")
 title('3x3 Laplacian without noise vs with noise')
 
-%b) Laplacianos basados en la segunda derivada de Gaussiana de orden 5x5, 7x7 y 11x11, constrúyalos con el método visto en clase.
-LapGauss5 = fspecial('log',[5 5]); %filtro laplaciano-gaussiano rotacionalmente simétrico de tamaño hsize
+%b) Laplacianos basados en la segunda derivada de Gaussiana de orden 5x5, 
+% 7x7 y 11x11, constrúyalos con el método visto en clase.
+%filtro laplaciano-gaussiano rotacionalmente simétrico de tamaño hsize
+LapGauss5 = fspecial('log',[5 5]); 
 imglapgaus5 = imfilter(imagen, LapGauss5);
 imglapgausnoise5 = imfilter(imagenruido, LapGauss5);
 
@@ -209,10 +244,12 @@ imshowpair(imglapgaus11, imglapgausnoise11, "montage")
 title('Laplacian 2nd derivative 11x11 Gauss without noise vs with noise')
 
 
-%6. Difuminar las imágenes sin ruido y con ruido usando un filtro paso bajas de orden 5x5, de tal manera
-%que se obtenga una imagen sin ruido y con pérdida de nitidez y otra imagen con ruido y perdida de
-%nitidez. Para cada uno de los siguientes incisos, filtrar las imágenes utilizando el filtro unsharp masking
-%encontrado con los siguientes tipos de filtro paso bajas:
+%6. Difuminar las imágenes sin ruido y con ruido usando un filtro paso 
+% bajas de orden 5x5, de tal manera que se obtenga una imagen sin ruido y 
+% con pérdida de nitidez y otra imagen con ruido y perdida de nitidez. Para
+% cada uno de los siguientes incisos, filtrar las imágenes utilizando el 
+% filtro unsharp masking encontrado con los siguientes tipos de filtro paso
+% bajas:
 %a) Filtro paso bajas de bloque de orden 3x3 y 7x7.
 %Imagen sin ruido orden 3x3
 unsharp1= imsharpen(imsrfl1);
