@@ -72,11 +72,11 @@ pwr3 = edge(imagen,'prewitt','vertical');
 pwr2= edge(imagenruido,'prewitt','horizontal');
 pwr4 = edge(imagenruido,'prewitt','vertical');
 
-figure("name",'FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: HORIZONTAL')
+figure("name",'4b: HORIZONTAL')
 imshowpair(pwr, pwr2, "montage")
 title('FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: HORIZONTAL')
 
-figure("name",'FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: VERTICAL')
+figure("name",'4b: VERTICAL')
 imshowpair(pwr3, pwr4, "montage")
 title('FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: VERTICAL')
 
@@ -88,11 +88,11 @@ sobel3 = edge(imagen, "sobel", 'vertical');
 sobel2 = edge(imagenruido, "sobel",'horizontal');
 sobel4 = edge(imagenruido, "sobel",'vertical');
 
-figure("name",'FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: HORIZONTAL')
+figure("name",'4c: HORIZONTAL')
 imshowpair(sobel, sobel2, "montage")
 title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: HORIZONTAL')
 
-figure("name",'FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: VERTICAL')
+figure("name",'4c: VERTICAL')
 imshowpair(sobel3, sobel4, "montage")
 title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: VERTICAL')
 %d) Basados en la primera derivada de Gaussiana de orden 5x5, 7x7 y 11x11.
