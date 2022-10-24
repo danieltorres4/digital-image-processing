@@ -61,9 +61,19 @@ subplot(1,2,2);
 imshow(imcrfl4); 
 title('NOISY IMAGE WITH 11x11 FILTER');
 
+%3. Aplicar los filtros paso bajas binomiales a la imagen sin ruido y a la imagen con ruido usando filtros de orden 3x3, 7x7, 9x9 y 11x11.
+
+
 %4. Aplicar a la imagen sin ruido y con ruido los filtros basados
 %en la primera derivada de gausiana o detectores de borde siguientes:
 %   a) De bloque [1 -1].
+bloque = edge(imagen, 'zerocross', [1 -1]); %Detecta bordes observando los cruces por cero después de filtrar la imagen con un filtro de bloque especificado
+bloquenoise = edge(imagenruido, 'zerocross', [1 -1]);
+
+figure("name",'Filtro de bloque')
+imshowpair(bloque, bloquenoise, "montage")
+title('Block filter [1 -1] without noise vs with noise')
+
 %   b) Prewitt en la dirección X y en la dirección Y.
 %Sin ruido 
 pwr= edge(imagen,'prewitt','horizontal');
@@ -72,11 +82,11 @@ pwr3 = edge(imagen,'prewitt','vertical');
 pwr2= edge(imagenruido,'prewitt','horizontal');
 pwr4 = edge(imagenruido,'prewitt','vertical');
 
-figure("name",'4b: HORIZONTAL')
+figure("name",'FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: HORIZONTAL')
 imshowpair(pwr, pwr2, "montage")
 title('FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: HORIZONTAL')
 
-figure("name",'4b: VERTICAL')
+figure("name",'FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: VERTICAL')
 imshowpair(pwr3, pwr4, "montage")
 title('FREE-NOISE IMAGE WITH PREWITT FILTER vs NOISY IMAGE WITH PREWITT FILTER: VERTICAL')
 
@@ -88,34 +98,51 @@ sobel3 = edge(imagen, "sobel", 'vertical');
 sobel2 = edge(imagenruido, "sobel",'horizontal');
 sobel4 = edge(imagenruido, "sobel",'vertical');
 
-figure("name",'4c: HORIZONTAL')
+figure("name",'FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: HORIZONTAL')
 imshowpair(sobel, sobel2, "montage")
 title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: HORIZONTAL')
 
-figure("name",'4c: VERTICAL')
+figure("name",'FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: VERTICAL')
 imshowpair(sobel3, sobel4, "montage")
 title('FREE-NOISE IMAGE WITH SOBEL FILTER vs NOISY IMAGE WITH SOBEL FILTER: VERTICAL')
+
 %d) Basados en la primera derivada de Gaussiana de orden 5x5, 7x7 y 11x11.
 
-%6. Difuminar las imágenes sin ruido y con ruido usando un filtro paso bajas de orden 5x5, de tal manera
-%que se obtenga una imagen sin ruido y con pérdida de nitidez y otra imagen con ruido y perdida de
-%nitidez. Para cada uno de los siguientes incisos, filtrar las imágenes utilizando el filtro unsharp masking
-%encontrado con los siguientes tipos de filtro paso bajas:
-%a) Filtro paso bajas de bloque de orden 3x3 y 7x7.
-%Imagen sin ruido orden 3x3
-unsharp1= imsharpen(imsrfl1);
-figure, imshow(unsharp1)
-title('Sharpened Image1');
-%Imagen sin ruido orden 7x7
-unsharp2= imsharpen(imsrfl3);
-figure, imshow(unsharp2)
-title('Sharpened Image2');
-%Imagen con ruido orden 3x3
-unsharp3= imsharpen(imcrfl1);
-figure, imshow(unsharp3)
-title('Sharpened Image3');
-%Imagen con ruido orden 7x7
-unsharp4= imsharpen(imcrfl3);
-figure, imshow(unsharp4)
-title('Sharpened Image2');
-%b) Filtro paso bajas binomial de orden 3x3 y 7x7.
+
+
+%5. De igual manera, aplicar a la imagen sin ruido y a la imagen con ruido los filtros basados en la segunda derivada de gausiana siguientes:
+
+%a)El Laplaciano 3x3 que encuentre en la literatura, por ejemplo, el filtro con 8 al centro y rodeado de -1’s.
+alpha = 0.2; %forma el filtro de 8 en el centro y rodeado de -1s
+laplacian = fspecial('laplacian',alpha); %Filtro de 3 por 3 que aproxima la forma del operador laplaciano bidimensional
+imglap = imfilter(imagen,laplacian);
+imglapnoise = imfilter(imagenruido,laplacian);
+
+figure("name",'Segunda derivada: Laplaciano')
+imshowpair(imglap, imglapnoise, "montage")
+title('3x3 Laplacian without noise vs with noise')
+
+%b) Laplacianos basados en la segunda derivada de Gaussiana de orden 5x5, 7x7 y 11x11, constrúyalos con el método visto en clase.
+LapGauss5 = fspecial('log',[5 5]); %filtro laplaciano-gaussiano rotacionalmente simétrico de tamaño hsize
+imglapgaus5 = imfilter(imagen, LapGauss5);
+imglapgausnoise5 = imfilter(imagenruido, LapGauss5);
+
+LapGauss7 = fspecial('log',[7 7]);
+imglapgaus7 = imfilter(imagen, LapGauss7);
+imglapgausnoise7 = imfilter(imagenruido, LapGauss7);
+
+LapGauss11 = fspecial('log',[11 11]);
+imglapgaus11 = imfilter(imagen, LapGauss11);
+imglapgausnoise11 = imfilter(imagenruido, LapGauss11);
+
+figure("name",'Laplacian basados en la segunda derivada de Gaussiana de orden 5x5')
+imshowpair(imglapgaus5, imglapgausnoise5, "montage")
+title('Laplacian 2nd derivative 5x5 Gauss without noise vs with noise')
+
+figure("name",'Laplacian basados en la segunda derivada de Gaussiana de orden 7x7')
+imshowpair(imglapgaus7, imglapgausnoise7, "montage")
+title('Laplacian 2nd derivative 7x7 Gauss without noise vs with noise')
+
+figure("name",'Laplacian basados en la segunda derivada de Gaussiana de orden 11x11')
+imshowpair(imglapgaus11, imglapgausnoise11, "montage")
+title('Laplacian 2nd derivative 11x11 Gauss without noise vs with noise')
