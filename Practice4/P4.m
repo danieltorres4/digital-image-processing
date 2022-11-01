@@ -30,46 +30,46 @@ imsrfl1 = imfilter(imagen,fl1);
 imsrfl2 = imfilter(imagen,fl2);
 imsrfl3 = imfilter(imagen,fl3);
 imsrfl4 = imfilter(imagen,fl4);
-% Aplicando los filtros
-figure("name","NOISE-FREE IMAGE FILTERS: 3x3 and 5x5")
-subplot(1,2,1); 
-imshow(imsrfl1); 
-title('NOISE-FREE IMAGE WITH 3x3 FILTER');
-
-subplot(1,2,2); 
-imshow(imsrfl2); 
-title('NOISE-FREE IMAGE WITH 5x5 FILTER');
-
-figure("name","NOISE-FREE IMAGE FILTERS: 7x7 and 11x11")
-subplot(1,2,1); 
-imshow(imsrfl3); 
-title('NOISE-FREE IMAGE WITH 7x7 FILTER');
-
-subplot(1,2,2); 
-imshow(imsrfl4); 
-title('NOISE-FREE IMAGE WITH 11x11 FILTER');
 
 % Aplicando filtros a la imagen con ruido
 imcrfl1 = imfilter(imagenruido,fl1);
 imcrfl2 = imfilter(imagenruido,fl2);
 imcrfl3 = imfilter(imagenruido,fl3);
 imcrfl4 = imfilter(imagenruido,fl4);
-%Se muestran los resultados de aplicar los filtros
-figure("name","NOISY IMAGE FILTERS: 3x3 and 5x5")
+
+% Mostrando resultados
+figure("name","2. FILTERS: 3x3")
 subplot(1,2,1); 
-imshow(imcrfl1); 
+imshow(imsrfl1); 
+title('NOISE-FREE IMAGE WITH 3x3 FILTER');
+subplot(1,2,2);
+imshow(imcrfl1);
 title('NOISY IMAGE WITH 3x3 FILTER');
-subplot(1,2,2); 
-imshow(imcrfl2); 
+
+figure("name","2. FILTERS: 5x5")
+subplot(1,2,1); 
+imshow(imsrfl2); 
+title('NOISE-FREE IMAGE WITH 5x5 FILTER');
+subplot(1,2,2);
+imshow(imcrfl2);
 title('NOISY IMAGE WITH 5x5 FILTER');
 
-figure("name","NOISY IMAGE FILTERS: 7x7 and 11x11")
+figure("name","2. FILTERS: 7x7")
 subplot(1,2,1); 
-imshow(imcrfl3); 
+imshow(imsrfl3); 
+title('NOISE-FREE IMAGE WITH 7x7 FILTER');
+subplot(1,2,2);
+imshow(imcrfl3);
 title('NOISY IMAGE WITH 7x7 FILTER');
-subplot(1,2,2); 
-imshow(imcrfl4); 
+
+figure("name","2. FILTERS 11x11");
+subplot(1,2,1); 
+imshow(imsrfl4); 
+title('NOISE-FREE IMAGE WITH 11x11 FILTER');
+subplot(1,2,2);
+imshow(imcrfl4);
 title('NOISY IMAGE WITH 11x11 FILTER');
+
 
 %3. Aplicar los filtros paso bajas binomiales a la imagen sin ruido y a la 
 % imagen con ruido usando filtros de orden 3x3, 7x7, 9x9 y 11x11.
