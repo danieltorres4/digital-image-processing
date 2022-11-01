@@ -66,22 +66,6 @@ subplot(1,2,2);
 imshow(conv2_11x11V, []);
 title("CONV2 11x11 USING VALID");
 
-%2- Obtener la DFT de la imagen original y desplegarla de manera amplificada 
-%utilizando el logaritmo del módulo de la DFT para dicha amplificación. 
-pentImg = imread('pentagon256x256.tif');
-%imshow(pentImg,'InitialMagnification','fit')
-F = fft2(pentImg);
-F2 = log(abs(F));
-%imshow(F2,[-1 5],'InitialMagnification','fit');
-colormap(jet); 
-
-%Cambiar el eje de coordenadas (comando MATLAB ffshift) y nuevamente amplificar.
-Y=fft2(pentImg);
-F3 = log(abs(Y));
-imagesc(abs(fftshift(F3)));
-title("DFT IMAGEN ORIGINAL");
-
-
 
 %3- Obtener la convolución circular ($\otimes$) de la imagen con el filtro 
 %paso bajas a través de la DFT. Usar también diferentes tamaños de filtros. 
