@@ -30,36 +30,41 @@ imgFil2 = imfilter(pentImg,fil2);
 imgFil3 = imfilter(pentImg,fil3);
 
 
-conv2_7x7F = conv2(pentImg,imgFil,'full');
+conv2_7x7F = conv2(imgFil,pentImg,'full');
+conv2_7x7V = conv2(imgFil,pentImg,'valid');
+conv2_7x7V = double(conv2_7x7V);
+
 conv2_9x9F = conv2(pentImg,imgFil2,'full');
+conv2_9x9V = conv2(pentImg,imgFil2,'valid');
+
 conv2_11x11F = conv2(pentImg,imgFil3,'full');
+conv2_11x11V = conv2(pentImg,imgFil3,'valid');
 
 %Mostrando resultados
-figure("name","1. CONV2 7x7 USING FULL")
+figure("name","1. CONV2 7x7 USING FULL vs VALID");
+subplot(1,2,1);
 imshow(conv2_7x7F,[]);
 title("CONV2 7x7 USING FULL");
 
-figure("name","1. CONV2 9x9 USING FULL")
+subplot(1,2,2);
+imshow(conv2_7x7V,[]);
+title("CONV2 7x7 USING VALID");
+
+figure("name","1. CONV2 9x9 USING FULL");
+subplot(1,2,1);
 imshow(conv2_9x9F,[]);
 title("CONV2 9x9 USING FULL");
+subplot(1,2,2);
+imshow(conv2_9x9V,[]);
+title("CONV2 9x9 USING VALID");
 
-figure("name","1. CONV2 11x11 USING FULL")
+figure("name","1. CONV2 11x11 USING FULL");
+subplot(1,2,1);
 imshow(conv2_11x11F,[]);
 title("CONV2 11x11 USING FULL");
-
-%2- Obtener la DFT de la imagen original y desplegarla de manera amplificada 
-%utilizando el logaritmo del módulo de la DFT para dicha amplificación. 
-pentImg = imread('pentagon256x256.tif');
-imshow(pentImg,'InitialMagnification','fit')
-F = fft2(pentImg);
-F2 = log(abs(F));
-imshow(F2,[-1 5],'InitialMagnification','fit');
-colormap(jet); 
-%Cambiar el eje de coordenadas (comando MATLAB ffshift) y nuevamente amplificar.
-Y=fft2(pentImg);
-F3 = log(abs(Y));
-imagesc(abs(fftshift(F3)));
-
+subplot(1,2,2);
+imshow(conv2_11x11V, []);
+title("CONV2 11x11 USING VALID");
 
 
 %3- Obtener la convolución circular ($\otimes$) de la imagen con el filtro 
