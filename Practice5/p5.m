@@ -79,35 +79,60 @@ title("DFT IMAGEN ORIGINAL");
 %3- Obtener la convolución circular ($\otimes$) de la imagen con el filtro 
 %paso bajas a través de la DFT. Usar también diferentes tamaños de filtros. 
 %Desplegar las imágenes resultantes.
-DFT_img_s_f = F2;
-figure("name","3. DFT sin filtro de la imagen original")
+DFT_img_s_f = log(abs(F));
+figure("name","DFT sin filtro de la imagen original")
 imshow(DFT_img_s_f,[]);
+title("DFT de la imagen original")
 
 DFT_f_7x7 = fft2(imgFil);
 DFT_img_c_f_7x7 = log(abs(DFT_f_7x7));
-figure("name","3. DFT de la imagen con filtro de 7x7")
+figure("name","DFT de la imagen con filtro de 7x7")
 imshow(DFT_img_c_f_7x7,[]);
+title("DFT de la imagen con filtro de 7x7")
 
 DFT_f_9x9 = fft2(imgFil2);
 DFT_img_c_f_9x9 = log(abs(DFT_f_9x9));
-figure("name","3. DFT de la imagen con filtro de 9x9")
+figure("name","DFT de la imagen con filtro de 9x9")
 imshow(DFT_img_c_f_9x9,[]);
+title("DFT de la imagen con filtro de 9x9")
 
 DFT_f_11x11 = fft2(imgFil3);
 DFT_img_c_f_11x11 = log(abs(DFT_f_11x11));
-figure("name","3. DFT de la imagen con filtro de 11x11")
+figure("name","DFT de la imagen con filtro de 11x11")
 imshow(DFT_img_c_f_11x11,[]);
+title("DFT de la imagen con filtro de 11x11")
 
 conv_circ_7x7 = conv2(DFT_img_s_f,DFT_img_c_f_7x7,"full");
 conv_circ_9x9 = conv2(DFT_img_s_f,DFT_img_c_f_9x9,"full");
 conv_circ_11x11 = conv2(DFT_img_s_f,DFT_img_c_f_11x11,"full");
-figure("name","3. Conv Circular 7x7")
-imshow(conv_circ_7x7,[]);
-figure("name","3. Conv Circular 9x9")
-imshow(conv_circ_9x9,[]);
-figure("name","3. Conv Circular 11x11")
-imshow(conv_circ_11x11,[]);
 
+cc1 = DFT_img_s_f * DFT_img_c_f_7x7;
+cc2 = DFT_img_s_f * DFT_img_c_f_9x9;
+cc3 = DFT_img_s_f * DFT_img_c_f_11x11;
+
+figure("name","Conv Circular 7x7 mediante la función conv2 vs Conv circular 7x7 mediante la operación de multiplicación ")
+subplot(1,2,1)
+imshow(conv_circ_7x7,[])
+title("Conv Circular 7x7 mediante la función conv2")
+subplot(1,2,2)
+imshow(cc1,[])
+title("Conv circular 7x7 mediante la operación de multiplicación")
+
+figure("name","Conv Circular 9x9 mediante la función conv2 vs Conv circular 9x9 mediante la operación de multiplicación")
+subplot(1,2,1)
+imshow(conv_circ_9x9,[])
+title("Conv Circular 9x9 mediante la función conv2")
+subplot(1,2,2)
+imshow(cc2,[])
+title("Conv circular 9x9 mediante la operación de multiplicación")
+
+figure("name","Conv Circular 11x11 mediante la función conv3 vs Conv circular 11x11 mediante la operación de multiplicación")
+subplot(1,2,1)
+imshow(conv_circ_11x11,[])
+title("Conv Circular 11x11 mediante la función conv2")
+subplot(1,2,2)
+imshow(cc3,[])
+title("Conv circular 11x11 mediante la operación de multiplicación")
 
 %4- Obtener la convolución lineal (*) de la imagen con el filtro paso bajas
 %a través de la DFT (comandos MATLAB fft2 y ifft2). Usar también diferentes
