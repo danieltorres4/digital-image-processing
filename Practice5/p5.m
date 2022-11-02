@@ -20,15 +20,10 @@ title("PENTAGON IMAGE WITHOUT FILTERS");
 %"full" y "valid" de la imagen con un filtro paso bajas (filtros de bloque)
 %Usar 2 o 3 tamaños diferentes de filtros, por ejemplo: 7x7, 9x9 y 11x11.
 
-%Filtros paso bajas a la imagen
+%Filtros paso bajas de diferente orden
 fil = fspecial('average',[7 7]);
 fil2 = fspecial('average',[9 9]);
 fil3 = fspecial('average',[11 11]);
-
-imgFil = imfilter(pentImg,fil);
-imgFil2 = imfilter(pentImg,fil2);
-imgFil3 = imfilter(pentImg,fil3);
-
 
 conv2_7x7F = conv2(pentImg,fil,'full');
 conv2_7x7V = conv2(pentImg,fil,'valid');
