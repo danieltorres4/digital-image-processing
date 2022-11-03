@@ -142,8 +142,52 @@ title("Conv circular 11x11 mediante la operación de multiplicación")
 %a través de la DFT (comandos MATLAB fft2 y ifft2). Usar también diferentes
 %tamaños de filtros. Desplegar las imágenes resultantes
 
+conv2_7x7DFT_f = conv2(tam,fil,'full');
+conv2_7x7DFT_v = conv2(tam,fil,'valid');
+
+conv2_9x9DFT_f = conv2(tam,fil2,'full');
+conv2_9x9DFT_v = conv2(tam,fil2,'valid');
+
+conv2_11x11DFT_f = conv2(tam,fil3,'full');
+conv2_11x11DFT_v = conv2(tam,fil3,'valid');
+
+figure("name","4. CONV2 WITH DFT USING FULL")
+subplot(2,2,1);
+imshow(conv2_7x7DFT_f,[]);
+title("CONV2 7x7 USING FULL WITH DFT");
+subplot(2,2,2);
+imshow(conv2_9x9DFT_f,[]);
+title("CONV2 9X9 USING FULL WITH DFT");
+subplot(2,2,3.5);
+imshow(conv2_11x11DFT_f,[]);
+title("CONV2 11X11 USING FULL WITH DFT");
+
+figure("name","4. CONV2 WITH DFT USING VALID")
+subplot(2,2,1);
+imshow(conv2_7x7DFT_v,[]);
+title("CONV2 7x7 USING VALID WITH DFT");
+subplot(2,2,2);
+imshow(conv2_9x9DFT_v,[]);
+title("CONV2 9X9 USING VALID WITH DFT");
+subplot(2,2,3.5);
+imshow(conv2_11x11DFT_v,[]);
+title("CONV2 11X11 USING VALID WITH DFT");
 
 %5- Comparar los resultados obtenidos en los puntos 1, 3 y 4 desplegando 
 %para un mismo tamaño de filtro las 3 convoluciones, por ejemplo: 
 %convolución lineal filtro 9x9, convolución lineal (DFT) filtro 9x9, 
 %convolución circular (DFT) filtro 9x9.
+
+figure("name","5. RESULTS COMPARISON")
+subplot(2,2,1);
+imshow(conv2_9x9F,[]);
+title("LINEAR CONV FILTER 9X9");
+subplot(2,2,2);
+imshow(conv2_9x9DFT_f,[]);
+title("LINEAR CONV (DFT) FILTER 9X9");
+subplot(2,2,3);
+imshow(conv_circ_9x9,[]);
+title("CIRC CONV FILTER 9X9 USING CONV2");
+subplot(2,2,4);
+imshow(cc2,[]);
+title("CIRC CONV FILTER 9X9 USING MULTIPLICATION");
