@@ -84,19 +84,19 @@ figure("name","DFT sin filtro de la imagen original")
 imshow(DFT_img_s_f,[]);
 title("DFT de la imagen original")
 
-DFT_f_7x7 = fft2(imgFil);
+DFT_f_7x7 = fft2(fil1);
 DFT_img_c_f_7x7 = log(abs(DFT_f_7x7));
 figure("name","DFT de la imagen con filtro de 7x7")
 imshow(DFT_img_c_f_7x7,[]);
 title("DFT de la imagen con filtro de 7x7")
 
-DFT_f_9x9 = fft2(imgFil2);
+DFT_f_9x9 = fft2(fil2);
 DFT_img_c_f_9x9 = log(abs(DFT_f_9x9));
 figure("name","DFT de la imagen con filtro de 9x9")
 imshow(DFT_img_c_f_9x9,[]);
 title("DFT de la imagen con filtro de 9x9")
 
-DFT_f_11x11 = fft2(imgFil3);
+DFT_f_11x11 = fft2(fil3);
 DFT_img_c_f_11x11 = log(abs(DFT_f_11x11));
 figure("name","DFT de la imagen con filtro de 11x11")
 imshow(DFT_img_c_f_11x11,[]);
