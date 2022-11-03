@@ -29,10 +29,6 @@ conv2_7x7F = conv2(pentImg,fil,'full');
 conv2_7x7V = conv2(pentImg,fil,'valid');
 conv2_7x7V = double(conv2_7x7V);
 
-imgFil = imfilter(pentImg,fil);
-imgFil2 = imfilter(pentImg,fil2);
-imgFil3 = imfilter(pentImg,fil3);
-
 conv2_9x9F = conv2(pentImg,fil2,'full');
 conv2_9x9V = conv2(pentImg,fil2,'valid');
 
