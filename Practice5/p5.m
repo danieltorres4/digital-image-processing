@@ -84,7 +84,7 @@ figure("name","DFT sin filtro de la imagen original")
 imshow(DFT_img_s_f,[]);
 title("DFT de la imagen original")
 
-DFT_f_7x7 = fft2(fil1);
+DFT_f_7x7 = fft2(fil);
 DFT_img_c_f_7x7 = log(abs(DFT_f_7x7));
 figure("name","DFT de la imagen con filtro de 7x7")
 imshow(DFT_img_c_f_7x7,[]);
