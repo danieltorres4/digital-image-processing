@@ -44,20 +44,21 @@ title("SOBREMUESTREO DE 4x4");
 %puede usar el comando subplot). Recuerde usar fftshift para centrar los 
 %espectros y una función de escalamiento para el despliegue, ejemplo: 
 %ImFDespliegue=log(1.0 + ImF), donde ImF es la DFT de la imagen con sobremuestreo.
+dftor = fftshift(abs(log(fft2(pentImg))));
 dft2x2 = fftshift(abs(log(fft2(pentImg))));
 dft4x4 = fftshift(abs(log(fft2(B))));
 
 figure('name',"1.2");
 subplot(2,2,1);
-imshow(fftshift(abs(log(fft2(pentImg)))), []);
+imshow(dftor, []);
 title("DFT DE IMAGEN ORIGINAL");
 
 subplot(2,2,2);
-imshow(fftshift(abs(log(fft2(B)))), []);
+imshow(dft2x2, []);
 title("DFT DE IMAGEN CON SOBREMUESTREO 2x2");
 
 subplot(2,2,3);
-imshow(fftshift(abs(log(fft2(C)))), []);
+imshow(dft4x4, []);
 title("DFT DE IMAGEN CON SOBREMUESTREO 4x4");
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
