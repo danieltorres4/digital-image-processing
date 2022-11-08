@@ -1,6 +1,18 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%        Practice - Interpolation         %%%
+%%%             Team members                %%%
+%%%     +Herrera Godina Adriana Jocelyn     %%%
+%%%        +Miranda Miranda Emiliano        %%%
+%%%      +Nicolás Marín Brian Geovanny      %%%
+%%%      +Sanchez Torres Sergio Daniel      %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%
-%Ejercicio 1
+%Ejercicio 1 - Sobremuestreo espacial
 %%%%%%%%%%%%
+
+%1.1 Obtenga el sobremuestreo de la imagen original insertando ceros entre 
+%los pixeles de la misma con factores $T \uparrow = 2 \times 2$ y $T 
+% \uparrow = 4 \times 4$
 A = imread("pentagon256x256.tif");
 
 %Sobremuestreo 2x2
