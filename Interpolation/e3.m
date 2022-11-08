@@ -31,7 +31,7 @@ colormap(gray);
 title("IS factor 2x2");
 
 subplot(3,2,5);
-image(c);
+image(C);
 colormap(gray);
 title("IS factor 4x4");
 
@@ -103,22 +103,6 @@ subplot(3, 2, 6)
 imshow(fftshift(abs(log(fft2(intercubica4x4)))), []);
 title("DFT Interpolación Cubica 4x4")
 
-function B = UPSAMPLE(A,N,M)
-    B = zeros([size(A,1)*M size(A,2)*N]);
-    B(1:M:end,1:N:end) = A;
-end 
- 
-function f = cubic(x)
-
-        absx = abs(x);
-        absx2 = absx.^2;
-        absx3 = absx.^3;
-
-        f = (1.5*absx3 - 2.5*absx2 + 1) .* (absx <= 1) + ...
-                        (-0.5*absx3 + 2.5*absx2 - 4*absx + 2) .* ...
-                        ((1 < absx) & (absx <= 2));
-                    
-end
 
 %%%%%%%%%%%%
 %Ejercicio 3
@@ -179,3 +163,22 @@ title("3.5 DFT INVERSA 1")
 figure("name", "DFT Inversa 4x4")
 imshow(DFTinverse4x4, [])
 title("3.5 DFT INVERSA 2")
+
+
+
+function B = UPSAMPLE(A,N,M)
+    B = zeros([size(A,1)*M size(A,2)*N]);
+    B(1:M:end,1:N:end) = A;
+end 
+ 
+function f = cubic(x)
+
+        absx = abs(x);
+        absx2 = absx.^2;
+        absx3 = absx.^3;
+
+        f = (1.5*absx3 - 2.5*absx2 + 1) .* (absx <= 1) + ...
+                        (-0.5*absx3 + 2.5*absx2 - 4*absx + 2) .* ...
+                        ((1 < absx) & (absx <= 2));
+                    
+end
