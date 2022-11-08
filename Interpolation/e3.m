@@ -6,54 +6,65 @@
 %%%      +Nicolás Marín Brian Geovanny      %%%
 %%%      +Sanchez Torres Sergio Daniel      %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Ejercicio 1 - Sobremuestreo espacial
-%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+pentImg = imread("pentagon256x256.tif");
+figure('name',"IMAGEN ORIGINAL");
+imshow(pentImg);
+title("Imagen Original");
 
 %1.1 Obtenga el sobremuestreo de la imagen original insertando ceros entre 
 %los pixeles de la misma con factores $T \uparrow = 2 \times 2$ y $T 
-% \uparrow = 4 \times 4$
-A = imread("pentagon256x256.tif");
-
+%\uparrow = 4 \times 4$
 %Sobremuestreo 2x2
-M = 2;
-N = 2;
-
-B = zeros([size(A,1) * M size(A,2) * N]);
-B(1:M:end, 1:N:end) = A;
+B = zeros([size(pentImg,1) * 2 size(pentImg,2) * 2]);
+B(1:2:end, 1:2:end) = pentImg;
 
 %Sobremuestreo 4x4
-O = 4;
-P = 4;
+C = zeros([size(pentImg,1) * 4 size(pentImg,2) * 4]);
+C(1:4:end, 1:4:end) = pentImg;
 
-C = zeros([size(A,1) * O size(A,2) * P]);
-C(1:O:end, 1:P:end) = A;
-
-subplot(3,2,1);
-imshow(A);
-title("PENTAGON (original)");
-
-subplot(3,2,2);
-imshow(fftshift(abs(log(fft2(A)))), []);
-title("DFT de pentagon.tif");
-
-subplot(3,2,3);
+figure('name',"1.1")
+subplot(1,2,1);
 image(B);
 colormap(gray);
-title("IS factor 2x2");
+title("SOBREMUESTREO DE 2x2");
 
-subplot(3,2,5);
+subplot(1,2,2);
 image(C);
 colormap(gray);
-title("IS factor 4x4");
+title("SOBREMUESTREO DE 4x4");
 
-subplot(3,2,6);
+%1.2 Obtenga a la magnitud del espectro de la DFT (abs) de cada una de las 
+%imágenes sobremuestreadas y de la imagen original. Despliegue los 
+%resultados en una misma figura para efectos de comparación (en Matlab se 
+%puede usar el comando subplot). Recuerde usar fftshift para centrar los 
+%espectros y una función de escalamiento para el despliegue, ejemplo: 
+%ImFDespliegue=log(1.0 + ImF), donde ImF es la DFT de la imagen con sobremuestreo.
+dft2x2 = fftshift(abs(log(fft2(pentImg))));
+dft4x4 = fftshift(abs(log(fft2(B))));
+
+figure('name',"1.2");
+subplot(2,2,1);
+imshow(fftshift(abs(log(fft2(pentImg)))), []);
+title("DFT DE IMAGEN ORIGINAL");
+
+subplot(2,2,2);
+imshow(fftshift(abs(log(fft2(B)))), []);
+title("DFT DE IMAGEN CON SOBREMUESTREO 2x2");
+
+subplot(2,2,3);
 imshow(fftshift(abs(log(fft2(C)))), []);
-title("DFT IS factor 4x4");
+title("DFT DE IMAGEN CON SOBREMUESTREO 4x4");
 
-%%%%%%%%%%%%
-%Ejercicio 2
-%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Ejercicio 2 - Interpolación espacial. Interpole las imágenes con
+%sobremuestreo obtenidas en el inciso anterior (con factores $T \uparrow = 
+%2 \times 2$ y $T \uparrow = 4 \times 4$) usando interpoladores:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Img = imread("pentagon256x256.tif");
 grayImg = Img;
 
@@ -119,17 +130,16 @@ title("DFT Interpolación Cubica 4x4")
 %%%%%%%%%%%%
 %Ejercicio 3
 %%%%%%%%%%%%
-Img = imread("pentagon256x256.tif");
-grayImg = Img;
+grayImg = pentImg;
 
 %3.1 DFT de imagen original
-DFTOriginal = fft2(Img);
+DFTOriginal = fft2(pentImg);
 imshow(log(DFTOriginal), []);
 title("3.1 DFT ORIGINAL")
 
 %3.2 DFT con ceros alrededor
-DFTwithPading2x2 = padarray(fftshift(DFTOriginal), fix(size(Img)/2), 0, 'both');
-DFTwithPading4x4 = padarray(fftshift(DFTOriginal), fix(size(Img)*(3/2)), 0, 'both');
+DFTwithPading2x2 = padarray(fftshift(DFTOriginal), fix(size(pentImg)/2), 0, 'both');
+DFTwithPading4x4 = padarray(fftshift(DFTOriginal), fix(size(pentImg)*(3/2)), 0, 'both');
 figure("name", "DFT(abs) con ceros alrededor 2x2")
 imshow((log(DFTwithPading2x2)), [])
 title("3.2 DFT CON CEROS ALREDEDOR 2x2")
