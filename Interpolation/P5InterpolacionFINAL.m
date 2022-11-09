@@ -296,11 +296,19 @@ figure("name", "3.5 DFT Inversa 2x2")
 %subplot(1,2,1);
 imshow(DFTinverse2x2, [])
 title("DFT INVERSA 2x2")
+figure("name","3.5 Zoom en inversa interpolador frec. 2x2");
+imshow(DFTinverse2x2, []);
+zoom(5)
+title("Zoom de 5x en inversa interpolador frec. 2x2")
 
 %subplot(1,2,2);
 figure("name", "3.5 DFT Inversa 4x4")
 imshow(DFTinverse4x4, [])
 title("DFT INVERSA 4x4")
+figure("name","3.5 Zoom en inversa interpolador frec. 4x4");
+imshow(DFTinverse4x4, []);
+zoom(5)
+title("Zoom de 5x en inversa interpolador frec. 4x4")
 
 
 function B = UPSAMPLE(A,N,M)
