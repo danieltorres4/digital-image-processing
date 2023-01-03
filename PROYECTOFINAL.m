@@ -1,3 +1,13 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%             FINAL PROJECT               %%% 
+%%%             Team members                %%%
+%%%     +Herrera Godina Adriana Jocelyn     %%%
+%%%        +Miranda Miranda Emiliano        %%%
+%%%      +Nicolás Marín Brian Geovanny      %%%
+%%%      +Sanchez Torres Sergio Daniel      %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %PROYECTO FINAL %
 %1.Visualización de las mascaras de segmentación en blanco y negro
 %CORTE 1
@@ -63,13 +73,20 @@ bw4 = activecontour(Y4,mask4,200,'edge');
 hold on;
 visboundaries(bw4,'Color','r'); 
 imge4 = labeloverlay(Y4,bw4);
+bw5 = activecontour(Y,mask,200,'edge');
+hold on;
+visboundaries(bw5,'Color','r'); 
+imge5 = labeloverlay(Y,bw5);
+bw6 = activecontour(Y,mask,200,'edge');
+hold on;
+visboundaries(bw6,'Color','r'); 
+imge6 = labeloverlay(Y,bw6);
 %figure
 
 figure("name","MASCARAS SOBREPUESTAS A LA IMAGEN ORIGINAL")
-montage({imge1,imge2,imge3,imge4})
+montage({imge1,imge2,imge3,imge4,imge5,imge6})
 title('MONTAJE MASCARA SOBREPUESTA A LA IMAGEN ORIGINAL 1-6');
 
 figure("name","MASCARAS BLANCO Y NEGRO")
 montage({mask,mask2,mask3,mask4,mask5,mask6})
 title('MONTAJE MASCARA 1-6');
-
