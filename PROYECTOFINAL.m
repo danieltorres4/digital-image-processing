@@ -12,56 +12,74 @@
 %1.Visualización de las mascaras de segmentación en blanco y negro
 %CORTE 1
 dicom1 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0140.dcm");
-Y = dicomread(dicom1);
+y = dicomread(dicom1);
 %CORTE2
 dicom2 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0141.dcm");
-Y2 = dicomread(dicom2);
+y2 = dicomread(dicom2);
 %CORTE3
 dicom3 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0142.dcm");
-Y3 = dicomread(dicom3);
+y3 = dicomread(dicom3);
 %CORTE4
 dicom4 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0143.dcm");
-Y4 = dicomread(dicom4);
+y4 = dicomread(dicom4);
 %CORTE5
 dicom5 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0144.dcm");
-Y5 = dicomread(dicom5);
+y5 = dicomread(dicom5);
 %CORTE6
 dicom6 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0145.dcm");
-Y6 = dicomread(dicom6);
+y6 = dicomread(dicom6);
 %CORTE7
 dicom7 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0146.dcm");
-Y7 = dicomread(dicom7);
+y7 = dicomread(dicom7);
 %CORTE8
 dicom8 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0147.dcm");
-Y8 = dicomread(dicom8);
+y8 = dicomread(dicom8);
 %CORTE9
 dicom9 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0148.dcm");
-Y9 = dicomread(dicom9);
+y9 = dicomread(dicom9);
 %CORTE10
 dicom10 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0149.dcm");
-Y10 = dicomread(dicom10);
+y10 = dicomread(dicom10);
 %CORTE11
 dicom11 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0150.dcm");
-Y11 = dicomread(dicom11);
+y11 = dicomread(dicom11);
 %CORTE12
 dicom12 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0151.dcm");
-Y12 = dicomread(dicom12);
+y12 = dicomread(dicom12);
 %CORTE13
 dicom13 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0152.dcm");
-Y13 = dicomread(dicom13);
+y13 = dicomread(dicom13);
 %CORTE14
 dicom14 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0153.dcm");
-Y14 = dicomread(dicom14);
+y14 = dicomread(dicom14);
 %CORTE15
 dicom15 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0154.dcm");
-Y15 = dicomread(dicom15);
+y15 = dicomread(dicom15);
 %CORTE16
 dicom16 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0155.dcm");
-Y16 = dicomread(dicom16);
+y16 = dicomread(dicom16);
 %CORTE6
 dicom17 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0156.dcm");
-Y17 = dicomread(dicom17);
+y17 = dicomread(dicom17);
 
+%DISMINUCIÒN DE RUIDO 
+Y = medfilt2(y);
+Y2 = medfilt2(y2);
+Y3 = medfilt2(y3);
+Y4 = medfilt2(y4);
+Y5 = medfilt2(y5);
+Y6 = medfilt2(y6);
+Y7 = medfilt2(y7);
+Y8 = medfilt2(y8);
+Y9 = medfilt2(y9);
+Y10 = medfilt2(y10);
+Y11 = medfilt2(y11);
+Y12 = medfilt2(y12);
+Y13 = medfilt2(y13);
+Y14 = medfilt2(y14);
+Y15 = medfilt2(y15);
+Y16 = medfilt2(y16);
+Y17 = medfilt2(y17);
 
 %SEGMENTACION MANUAL
 img =imshow(Y,[]);
