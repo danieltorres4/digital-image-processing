@@ -11,58 +11,60 @@
 %PROYECTO FINAL %
 %1.Visualización de las mascaras de segmentación en blanco y negro
 %CORTE 1
-dicom1 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0140.dcm");
+dicom1 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0140.dcm");
 y = dicomread(dicom1);
 %CORTE2
-dicom2 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0141.dcm");
+dicom2 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0141.dcm");
 y2 = dicomread(dicom2);
 %CORTE3
-dicom3 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0142.dcm");
+dicom3 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0142.dcm");
 y3 = dicomread(dicom3);
 %CORTE4
-dicom4 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0143.dcm");
+dicom4 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0143.dcm");
 y4 = dicomread(dicom4);
 %CORTE5
-dicom5 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0144.dcm");
+dicom5 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0144.dcm");
 y5 = dicomread(dicom5);
 %CORTE6
-dicom6 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0145.dcm");
+dicom6 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0145.dcm");
 y6 = dicomread(dicom6);
 %CORTE7
-dicom7 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0146.dcm");
+dicom7 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0146.dcm");
 y7 = dicomread(dicom7);
 %CORTE8
-dicom8 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0147.dcm");
+dicom8 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0147.dcm");
 y8 = dicomread(dicom8);
 %CORTE9
-dicom9 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0148.dcm");
+dicom9 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0148.dcm");
 y9 = dicomread(dicom9);
 %CORTE10
-dicom10 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0149.dcm");
+dicom10 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0149.dcm");
 y10 = dicomread(dicom10);
 %CORTE11
-dicom11 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0150.dcm");
+dicom11 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0150.dcm");
 y11 = dicomread(dicom11);
 %CORTE12
-dicom12 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0151.dcm");
+dicom12 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0151.dcm");
 y12 = dicomread(dicom12);
 %CORTE13
-dicom13 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0152.dcm");
+dicom13 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0152.dcm");
 y13 = dicomread(dicom13);
 %CORTE14
-dicom14 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0153.dcm");
+dicom14 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0153.dcm");
 y14 = dicomread(dicom14);
 %CORTE15
-dicom15 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0154.dcm");
+dicom15 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0154.dcm");
 y15 = dicomread(dicom15);
 %CORTE16
-dicom16 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0155.dcm");
+dicom16 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0155.dcm");
 y16 = dicomread(dicom16);
 %CORTE6
-dicom17 = dicominfo("C:\Users\Adri\Documents\Adriana\2023-1\PROCESAMIENTO DIGITAL DE IMAGENES\PROYECTO\Estudio 1\1\BOULLOSA-MADRAZO-ANTONIO1r.0156.dcm");
+dicom17 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0156.dcm");
 y17 = dicomread(dicom17);
 
 %DISMINUCIÒN DE RUIDO 
+%Se hace un filtrado de mediana en el que cada pixel de salida
+%contiene el valor de la mediana. Se usa medfilt
 Y = medfilt2(y);
 Y2 = medfilt2(y2);
 Y3 = medfilt2(y3);
@@ -82,70 +84,92 @@ Y16 = medfilt2(y16);
 Y17 = medfilt2(y17);
 
 %SEGMENTACION MANUAL
+%Mostramos la imagen con imshow. Luego, usamos roi (región de interés de
+%una imagen). Sirve para trazar figuras (cuadrados, polígonos, etc.). A su
+%vez, con AssistedFreehand podemos especificar forma de la región de
+%interés siguiendo los bordes "automáticamente". Usamos draw para dibujar
+%la figura antes plasmada. Al final, se crea la máscara de la roi en blanco
+%y negro por default
 img =imshow(Y,[]);
 roi = images.roi.AssistedFreehand(img);
 draw(roi)
 mask = createMask(roi);
+
 img2 =imshow(Y2,[]);
 roi2 = images.roi.AssistedFreehand(img2);
 draw(roi2)
 mask2 = createMask(roi2);
+
 img3 =imshow(Y3,[]);
 roi3 = images.roi.AssistedFreehand(img3);
 draw(roi3)
 mask3 = createMask(roi3);
+
 img4 =imshow(Y2,[]);
 roi4 = images.roi.AssistedFreehand(img4);
 draw(roi4)
 mask4 = createMask(roi4);
+
 img5 =imshow(Y5,[]);
 roi5 = images.roi.AssistedFreehand(img5);
 draw(roi5)
 mask5 = createMask(roi5);
+
 img6 =imshow(Y6,[]);
 roi6 = images.roi.AssistedFreehand(img6);
 draw(roi6)
 mask6 = createMask(roi6);
+
 img7 =imshow(Y7,[]);
 roi7 = images.roi.AssistedFreehand(img7);
 draw(roi7)
 mask7 = createMask(roi7);
+
 img8 =imshow(Y8,[]);
 roi8 = images.roi.AssistedFreehand(img8);
 draw(roi8)
 mask8 = createMask(roi8);
+
 img9 =imshow(Y9,[]);
 roi9 = images.roi.AssistedFreehand(img9);
 draw(roi9)
 mask9 = createMask(roi9);
+
 img10 =imshow(Y10,[]);
 roi10 = images.roi.AssistedFreehand(img10);
 draw(roi10)
 mask10 = createMask(roi10);
+
 img11 =imshow(Y11,[]);
 roi11 = images.roi.AssistedFreehand(img11);
 draw(roi11)
 mask11 = createMask(roi11);
+
 img12 =imshow(Y12,[]);
 roi12 = images.roi.AssistedFreehand(img12);
 draw(roi12)
 mask12 = createMask(roi12);
+
 img13 =imshow(Y13,[]);
 roi13 = images.roi.AssistedFreehand(img13);
 draw(roi13)
 mask13 = createMask(roi13);
+
 img14 =imshow(Y14,[]);
 roi14 = images.roi.AssistedFreehand(img14);
 draw(roi14)
 mask14 = createMask(roi14);
+
 img15 =imshow(Y15,[]);
 roi15 = images.roi.AssistedFreehand(img15);
 draw(roi15)
 mask15 = createMask(roi15);
+
 img16 =imshow(Y16,[]);
 roi16 = images.roi.AssistedFreehand(img16);
 draw(roi16)
 mask16 = createMask(roi16);
+
 img17 =imshow(Y17,[]);
 roi17 = images.roi.AssistedFreehand(img17);
 draw(roi17)
@@ -153,6 +177,28 @@ mask17 = createMask(roi17);
 
 
 %MASCARAS SOPREPUESTAS
+%Usamos activecontour para técnica de contornos activos: es un algoritmo
+%iterativo de segmentación de crecimiento de regiones para poder especficar
+%curvas iniciales de una imagen con el fin de delimitar contornos o
+%límites.
+%
+%Recibe varios parámetros:
+%   * "edge" que calcula el gradiente por medio de la derivada de un 
+%     filtro gaussiano (para detectar bordes intensos y débiles). Hay otros
+%     métodos pero se eligió este porque se veía mejor
+%   * 200 es la intensidad a observar
+%   * máscara
+%   * 'Y' es la imagen original
+%
+%Se usa hold on para mantener los cortes hechos en cada imagen
+%visboundaries sirve para encontrar las ubicaciones de los pixeles del
+%límite en la imagen. Recibe 3 parámetros:
+%   * bw es el contorno
+%   * color
+%   * valor del color
+%
+%Labeloverlay fusiona la imagen de entrada (dicom) con la máscara. Esto se
+%mostrará en la Figura 2 más adelante...
 bw = activecontour(Y,mask,200,'edge');
 hold on;
 visboundaries(bw,'Color','r'); 
@@ -239,11 +285,7 @@ visboundaries(bw17,'Color','r');
 imge17 = labeloverlay(Y17,bw17);
 
 
-
-
-
-%figure
-
+%Se muestran las imágenes resultantes por medio de un montaje
 figure("name","MASCARAS SOBREPUESTAS A LA IMAGEN ORIGINAL")
 montage({imge1,imge2,imge3,imge4,imge5,imge6,imge7,imge8,imge9,imge10,imge11,imge12,imge13,imge14,imge15,imge16,imge17})
 title('MONTAJE MASCARA SOBREPUESTA A LA IMAGEN ORIGINAL 1-6');
