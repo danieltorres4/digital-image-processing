@@ -10,6 +10,7 @@
 
 %PROYECTO FINAL %
 %1.Visualización de las mascaras de segmentación en blanco y negro
+%Se ocupó el volumen 1. Se tratará el ventrículo derecho.
 %CORTE 1
 dicom1 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0140.dcm");
 y = dicomread(dicom1);
@@ -58,7 +59,7 @@ y15 = dicomread(dicom15);
 %CORTE16
 dicom16 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0155.dcm");
 y16 = dicomread(dicom16);
-%CORTE6
+%CORTE17
 dicom17 = dicominfo("BOULLOSA-MADRAZO-ANTONIO1r.0156.dcm");
 y17 = dicomread(dicom17);
 
